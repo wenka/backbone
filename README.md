@@ -23,3 +23,5 @@
 Backbone 源码：[https://github.com/jashkenas/backbone/](https://github.com/jashkenas/backbone/)
 
 Backbone.js入门教程第二版：[http://www.kancloud.cn/kancloud/backbonejs-learning-note](http://www.kancloud.cn/kancloud/backbonejs-learning-note)
+
+underscore.js中文文档：[http://www.css88.com/doc/underscore/](http://www.css88.com/doc/underscore/)

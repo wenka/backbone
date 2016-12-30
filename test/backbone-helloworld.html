@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Backbone HelloWorld</title>
+		<meta charset="utf-8">
+		<!-- 导入相关 js  -->
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			$(function(){
+
+				// 创建一个 World 模型
+				var Word = Backbone.Model.extend({
+					defaults:{
+						context:"没什么想说的！"
+					}
+				});
+
+				//创建一个 World 集合
+				var Words = Backbone.Collection.extend({
+					modle:Word //指定集合中的 model 
+				});
+
+				var words = new Words;
+
+				//创建整个 body 视图
+				var AppView = Backbone.View.extend({
+					el:$("body"),
+
+					events:{
+						"click #say":"say" //为 id="say" 的按钮绑定单击事件
+					},
+
+					//初始化
+					initialize: function () {
+						this.input = $("#context");
+						//监听器  对 words 集合的 add 事件监听，回调函数 addWord
+		            	this.listenTo(words,"add",this.addWord);
+		            },
+
+		            //对应上面 say
+		            say:function(){
+		            	var s = this.input.val();
+		            	var word; 
+		            	if (s == "") {
+		            		word = new Word;
+		            	}else{
+		            		word = new Word({context:s});
+		            	}
+		            	words.add(word);
+		            	this.input.val("");
+		            },
+
+		            //对应上面的 addWord
+		            addWord:function(model){
+		            	$("#list").append("<li>" + model.get("context") + "</li>");
+		            }
+				});
+
+				//创建视图实例
+				var appView = new AppView;
+
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<div style="margin:0 auto;">
+
+			<div style="width:300px;margin:0 auto;">
+				<h2>请输入你想说的话：</h2>
+				<input id="context" type="text" placeholder="enter your words..." />
+				<button id="say">Say</button>
+			</div>
+
+			<div style="width:300px;margin:0 auto;">
+				<ul id="list"></ul>
+			</div>	
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>View 前端模板</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+	    <script type="text/template" id="search_template">
+	        <label><%= search_label %></label>
+	        <input type="text" id="search_input" />
+	        <input type="button" id="search_button" value="Search" />
+	    </script>
+
+	    <script type="text/template" id="template2">
+	    	<ul>
+	       		<% _.each(labels, function(name) { %>
+			   		<% if(name != "label2") {%>
+				  	 	<li><%= name %></li>
+				    <% } %>
+				<% }); %>
+			</ul>
+	    </script>
+
+		<script type="text/javascript">
+
+			$(function(){
+				
+				/*var SearchView = Backbone.View.extend({
+					initialize:function(){
+						this.render({search_label:'搜索'});
+					},
+					render:function(context){
+						//使用 underscore 这个库，来编译模板
+						var template = _.template($('#search_template').html());
+						//加载模块到对应的 el 属性中。
+						$(this.el).html(template(context));
+					},
+					el:$("#search_container")
+				});
+
+				var view = new SearchView;*/
+
+				var SearchView = Backbone.View.extend({
+				    el: "#search_container",
+
+				    initialize: function(){
+				        var labels = ['label1', 'label2', 'label3'];
+				        this.render({labels: labels});
+				    },
+
+				    render: function(context) {
+				        //使用underscore这个库，来编译模板
+				        var template = _.template($("#template2").html());
+				        //加载模板到对应的el属性中
+				        $(this.el).html(template(context));
+				    },
+
+				});
+
+				var searchView = new SearchView();	
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="search_container"></div>
+	</body>
+</html>

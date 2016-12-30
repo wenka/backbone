@@ -1,0 +1,49 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Demo4 数据与服务器</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			//数据与服务器
+			/*Backbone.sync = function(method,model){
+				alert(method + " : " + JSON.stringify(model));
+				model.id=1;
+			}
+
+			var Model = Backbone.Model.extend({
+				defaults:{
+					name:'AA'
+				},
+				url:'/users'
+			});
+
+			var m = new Model;
+			m.save();
+			m.save({name:'BB'});*/
+
+			//从服务器中获取数据
+			Backbone.sync = function(method,model){
+				alert(method + " : " + JSON.stringify(model));
+			}
+
+			var Collection = Backbone.Collection.extend({
+				initialize:function(){
+					this.on('reset',function(){
+						alert("获取到了新的集合");
+					});
+				},
+				url:"/users"
+			});
+
+			var models = new Collection;
+			models.fetch();
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Demo1</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+
+			//直接创建对象
+			// var model = new Backbone.Model();
+			// var models = new Backbone.Collection();
+			// var voew = new Backbone.View();
+
+			//创建 Model 对象			
+			var model = new Backbone.Model();
+			//给 model 设置键值
+			model.set("name","wenka");
+			//通过 键 获取 值
+			console.log(model.get("name"));
+
+			var model1 = new Backbone.Model({'name':'wenka','age':20});
+			var model2 = new Backbone.Model({'name':'孟林洁','age':18});
+			//将 model1 和 model2 放入 集合中 
+			var models = new Backbone.Collection();
+			console.log(model1.get("age"));
+			models.add(model1);
+			models.add(model2);
+			console.log(JSON.stringify(models));
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Router</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			//路由定义
+			var Router = Backbone.Router.extend({
+					routes:{
+						"a": "a",
+						"b/:num": "b",
+						"b/:num1/n:num2": "b"
+					},
+					a: function(){
+						alert("a。。。。");
+					},
+					b: function(num,num2){
+						alert(num + "---" + num2);
+					}
+				});
+
+			var router = new Router;
+			//使其启动历史管理
+			Backbone.history.start();
+		</script>
+	</head>
+	<body>
+		<a href="#a">A</a>
+		<br>
+		<a href="#b/1">B1</a>
+		<br>
+		<a href="#b/1/n2">B2</a>
+	</body>
+</html>

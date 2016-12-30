@@ -1,0 +1,94 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Model 总述</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+
+			// 一、为对象属性赋值
+			//（一）直接定义，设置为默认值。
+			/*var People = Backbone.Model.extend(
+				{
+					//constructor ：初始化，创建 model 时执行。
+					//initialize ：创建后 model 执行。
+					initialize : function(){ 
+						alert("initialize：创建 Model 后执行。");
+					},
+					//设置默认值
+					defaults : {
+						name:'AA',
+						age:20
+					}
+				}
+			);
+
+			var people1 = new People();
+			console.log(JSON.stringify(people1));
+
+			//（二）赋值时定义
+			var people2 = new Backbone.Model();
+			people2.set({name:'BB',age:30});
+			console.log(JSON.stringify(people2));
+
+			//二、对象中的方法
+			var People = Backbone.Model.extend(
+					{
+						initialize:function(){
+							alert("你创建了我！");
+						},
+						defaults:{
+							name:"CC",
+							age:25
+						},
+						me:function(){
+							return "Name：" + this.get('name') + "，Age：" + this.get('age');
+						}
+					}
+				);
+
+			var people3 = new People();
+			alert(people3.me());
+*/
+			//为对象添加验证规则，以及错误提示
+			/*var Man = Backbone.Model.extend(
+					{
+						initialize:function(){
+							alert("创建成功！");
+							this.on('change:name',function(model){
+								alert("你将 name 值改为了："+ model.get('name'));
+							});
+							//模型验证失败后触发此事件
+							this.on('invalid',function(model,error){
+								alert(error);
+							});
+						},
+						defaults:{
+							name:'AA',
+							age:20
+						},
+						//添加验证规则
+						validate:function(attributes){
+							if (attributes.name == "www") {
+								return "name 不能为 www！";
+							};
+						}
+
+					}
+				);
+
+			var man = new Man({'validate':true});
+			man.set('name','www');
+			console.log(man.get('name'));
+			man.save();*/
+
+			//
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Model 总述</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			//自定义事件
+			/*var People = Backbone.Model.extend(
+					{
+						defaults:{
+							name:'AA',
+							age:20
+						},
+						initialize:function(){
+							this.on("change",function(model){
+								alert(JSON.stringify(people1));
+							});
+						}
+					}
+				);
+			
+			var people1 = new People;
+			console.log(JSON.stringify(people1));
+			people1.set('name','BB');*/
+
+			//指定某一属性的某个事件
+			/*var People = Backbone.Model.extend(
+					{
+						defaults:{
+							name:'AA',
+							age:20
+						},
+						initialize:function(){
+							this.on("change:age",function(model){
+								alert(JSON.stringify(people1));
+							});
+						}
+					}
+				);
+
+			var people1 = new People;
+			people1.set('name','BB');
+			console.log(JSON.stringify(people1));
+			people1.set('age',11);*/
+
+			//将 视图 与 模型 连接起来
+			$(function(){
+				var M = Backbone.Model.extend(
+						{
+							defaults:{
+								name:'AA',
+								age:20
+							}
+						}
+					);
+
+				//创建自定义视图，绑定监听器
+				var V = Backbone.View.extend(
+						{
+							initialize:function(){
+								this.listenTo(this.model,'change',this.show);
+							}
+							,
+							show:function(model){
+								$('body').append('<div>' + model.get('name') + "--->" + model.get('age') + '</div>');
+							}
+						}
+					);
+
+				var m = new M();
+				var view = new V({model:m});
+				m.set('name','BB');
+			});
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>VIEW</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			$(function(){
+				var View = Backbone.View.extend({
+					el:$('body'), //渲染视图
+					//添加事件委托
+					events:{
+						'click input[type=button]':'a',
+						'mouseover li':'b'
+					},
+					a:function(){
+						alert("You Click on 'Input' tag!");
+					},
+					b:function(){
+						console.log("You move on 'li' Tag!");
+					}
+				});
+
+				var v = new View(); 
+			})
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="SUBMIT"/>
+		<ul>
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+			<li>444444</li>
+		</ul>
+	</body>
+</html>

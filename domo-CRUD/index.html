@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Demo</title>
+		<meta charset="utf-8">
+	</head>
+
+	<body>
+		<div id="content" style="margin:0 auto;width:980px;padding-top:50px; "> 
+
+			<div align="center" style="padding:20px">
+				<h2>请输入姓名</h2>
+				<input id="new-name" type="text" placeholder="Please Input Name"/>
+				<button id="add" type="button">Add</button>
+			</div>
+
+			<div id="main" align="center">
+				<table id="list" border="0" cellpadding="30">
+					<caption>Student List</caption>
+					<tr>
+						<td><input id="select-all" type="checkbox"><label>全选</label></td>
+						<td>Id</td>
+						<td>Name</td>
+						<td>DELETE</td>
+					</tr>
+				</table>
+			</div>
+
+			<footer align="center">
+			</footer>
+
+		</div>
+	</body>
+
+	<script src="jquery.js"></script>
+	<script src="underscore.js"></script>
+	<script src="backbone.js"></script>
+	<script src="backbone-localstorage.js"></script>
+	<script src="student.js"></script>
+
+	<!-- template -->
+	<script type="text/template" id="item-template">
+		<td>
+			<input class="choose" type="checkbox" <%=selected ? "checked='checked'" : "" %> />
+		</td>
+		<td>
+			<%-id %>
+		</td>
+		<td>
+			<div class="show"><%-name%></div>
+			<input class="edit" name="name" type="text" value="<%-name%>" />
+		</td>
+		<td>
+			<button class="destroy">DELETE</button>
+	  	</td>
+	</script>
+
+	<script type="text/template" id="stats-template">
+		<% if (selected) {%>
+			<button type="button" id="clear-selected">Remove <%= selected %> selected <%= selected == 1 ? 'student' : 'students' %></button>
+		<%};%>
+	</script>
+</html>

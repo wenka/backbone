@@ -1,0 +1,82 @@
+<!DOCTYPE HTMl>
+<html>
+	<head>
+		<title>Demo2</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../underscore.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../backbone.js"></script>
+
+		<script type="text/javascript">
+			//为构造函数添加实例方法和静态方法
+
+			//在 extend 的第一个参数中定义的方法为 实例方法，
+			//在 extend 的第二个参数中定义的方法为 静态方法。
+			var M = Backbone.Model.extend(
+					{
+						//实例方法
+						method1:function(){ 
+							console.log("Method1");
+						},
+						method2:function(){
+							console.log("Method2");
+						}
+					},
+					{
+						//静态方法
+						method3:function(){
+							console.log("Method3");
+						},
+						method4:function(){
+							console.log("Method4");
+						}
+					}
+				);
+
+			//使用 自定义模型 创建对象
+			var model = new M;
+			model.method1();
+			model.method2();
+			//直接调用静态方法
+			M.method3();
+			M.method4();
+
+			console.log("----------分割线----------");
+
+			//为模型设置默认值
+			var M2 = Backbone.Model.extend(
+					{
+						defaults:{ //设置默认值
+							name:'wenka',
+							age:20
+						},
+						m1:function(){
+							alert("this is M2.m1");
+						}
+					}
+				);
+
+			var model2 = new M2;
+			console.log(model2.get('name'));
+			console.log(model2.get('age'));
+			console.log("----------分割线----------");
+
+			//继承操作
+			var M3 = M2.extend(
+					{
+						m2:function(){
+							alert("this is M3.m1");
+						}
+					}
+				);
+
+			var model3 = new M3;
+			console.log(JSON.stringify(model3));
+			model3.m1();
+			model3.m2();
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
